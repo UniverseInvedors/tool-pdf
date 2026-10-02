@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Viewer Online — Free PDF Reader in Browser | Universe Tools</title>
+  <meta name="description" content="View and read PDF files online for free. No plugin, no download, no sign-up required. Open PDF documents directly in your browser. Powered by Mozilla PDF.js." />
+  <meta name="keywords" content="pdf viewer online free, read pdf in browser, online pdf reader, view pdf without download, free pdf tool, pdf.js viewer" />
+  <link rel="canonical" href="https://pdf.universeinvedors.tech/" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Free Online PDF Viewer — Read PDFs in Your Browser" />
+  <meta property="og:description" content="Open and read PDF files online free. No plugin needed, no file upload. 100% browser-based." />
+  <meta property="og:url" content="https://pdf.universeinvedors.tech/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0d1117" />
+  <link rel="icon" href="https://universeinvedors.tech/favicon.ico" sizes="any" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDF Viewer Online","description":"Free browser-based PDF viewer. Read PDF files online without any plugin or download. Powered by PDF.js.","url":"https://pdf.universeinvedors.tech","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <meta name="google-adsense-account" content="ca-pub-8759032363251002" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8759032363251002" crossorigin="anonymous"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0d1117;--surface:#161b22;--border:rgba(255,255,255,.08);--text:#e6edf3;--muted:#8b949e;--amber:#f59e0b;--font:'Inter',system-ui,sans-serif}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100dvh;display:flex;flex-direction:column}
+    .topbar{display:flex;align-items:center;gap:.75rem;padding:.55rem 1rem;border-bottom:1px solid var(--border);background:rgba(13,17,23,.97);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;flex-wrap:wrap}
+    .logo{font-size:.82rem;font-weight:700;white-space:nowrap}
+    .nav-controls{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+    .btn{padding:.35rem .75rem;border-radius:7px;font-size:.78rem;font-weight:600;border:none;cursor:pointer;transition:all .15s;border:1px solid var(--border);background:var(--surface);color:var(--text)}
+    .btn:hover{background:rgba(255,255,255,.12)}
+    .btn:disabled{opacity:.4;cursor:not-allowed}
+    .page-info{font-size:.82rem;color:var(--muted);padding:0 .5rem;white-space:nowrap}
+    .scale-info{font-size:.78rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+    .btn-open{background:var(--amber);color:#000;border-color:transparent}
+    .btn-open:hover{background:#d97706}
+    .main{flex:1;overflow:hidden;display:flex;flex-direction:column}
+    .drop-zone{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;padding:3rem}
+    .drop-zone:hover,.drop-zone.drag{background:rgba(245,158,11,.03)}
+    .drop-icon{font-size:4rem;margin-bottom:1rem}
+    .drop-zone h2{font-size:1.2rem;font-weight:700;margin-bottom:.4rem}
+    .drop-zone p{font-size:.85rem;color:var(--muted)}
+    .drop-zone .badge{margin-top:.75rem;font-size:.72rem;font-weight:700;padding:.2rem .6rem;border-radius:100px;background:rgba(245,158,11,.1);color:var(--amber);border:1px solid rgba(245,158,11,.25)}
+    .canvas-wrap{flex:1;overflow:auto;background:#525659;display:flex;justify-content:center;padding:1.5rem}
+    canvas{box-shadow:0 4px 24px rgba(0,0,0,.5)}
+    .loading{display:flex;align-items:center;justify-content:center;flex:1;gap:.75rem;font-size:.9rem;color:var(--muted)}
+    .spinner{width:24px;height:24px;border:3px solid rgba(255,255,255,.1);border-top-color:var(--amber);border-radius:50%;animation:spin .8s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .info-section{max-width:760px;margin:2rem auto;padding:0 1rem;width:100%}
+    .info-section h2{font-size:1rem;font-weight:700;margin-bottom:.75rem}
+    .info-section ul{color:var(--muted);font-size:.87rem;line-height:1.9;padding-left:1.25rem}
+    .ad-slot{padding:.5rem;text-align:center;border-top:1px solid var(--border);margin-top:auto}
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">📄 <a href="https://universeinvedors.tech/tools" style="color:inherit;text-decoration:none">Universe Tools</a> / PDF Viewer</div>
+  <div class="nav-controls" id="navControls" style="display:none">
+    <button class="btn" id="prevBtn" onclick="changePage(-1)" disabled>‹ Prev</button>
+    <span class="page-info" id="pageInfo">1 / 1</span>
+    <button class="btn" id="nextBtn" onclick="changePage(1)" disabled>Next ›</button>
+    <button class="btn" onclick="changeScale(-0.2)">−</button>
+    <span class="scale-info" id="scaleInfo">120%</span>
+    <button class="btn" onclick="changeScale(0.2)">+</button>
+  </div>
+  <div style="flex:1"></div>
+  <button class="btn btn-open" onclick="document.getElementById('fileInput').click()">Open PDF</button>
+  <input type="file" id="fileInput" accept="application/pdf" style="display:none" onchange="loadPDF(this.files[0])">
+</header>
+
+<main class="main">
+  <div id="dropZone" class="drop-zone"
+    onclick="document.getElementById('fileInput').click()"
+    ondrop="ev=>{ev.preventDefault();loadPDF(ev.dataTransfer.files[0])}"
+    ondragover="ev=>{ev.preventDefault();this.classList.add('drag')}"
+    ondragleave="this.classList.remove('drag')">
+    <div class="drop-icon">📄</div>
+    <h2>Drop a PDF here or click to open</h2>
+    <p>Your file is read locally — never uploaded to any server</p>
+    <span class="badge">🔒 100% Private</span>
+  </div>
+  <div id="loadingDiv" class="loading" style="display:none">
+    <div class="spinner"></div><span>Loading PDF…</span>
+  </div>
+  <div id="canvasWrap" class="canvas-wrap" style="display:none">
+    <canvas id="pdfCanvas"></canvas>
+  </div>
+
+  <div class="info-section" id="infoSection">
+    <h2>How to use this PDF viewer</h2>
+    <ul>
+      <li>Click <strong>Open PDF</strong> or drag & drop your PDF file</li>
+      <li>Navigate pages with the Prev / Next buttons</li>
+      <li>Zoom in and out with the + / − buttons</li>
+      <li>Your PDF is opened locally — it never leaves your device</li>
+    </ul>
+    <h2 style="margin-top:1.25rem">Features</h2>
+    <ul>
+      <li>Page navigation with keyboard arrow keys</li>
+      <li>Zoom from 50% to 300%</li>
+      <li>Works with any PDF version</li>
+      <li>No file size limit (subject to your device memory)</li>
+      <li>Works offline once page is loaded</li>
+    </ul>
+  </div>
+</main>
+
+<div class="ad-slot" aria-label="Advertisement">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8759032363251002" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<script>
+let pdfDoc = null, currentPage = 1, scale = 1.2
+
+async function loadPDF(file) {
+  if (!file) return
+  document.getElementById('dropZone').style.display = 'none'
+  document.getElementById('loadingDiv').style.display = 'flex'
+  document.getElementById('infoSection').style.display = 'none'
+  try {
+    const { getDocument, GlobalWorkerOptions } = await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4/build/pdf.min.mjs')
+    GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4/build/pdf.worker.min.mjs'
+    const buf = await file.arrayBuffer()
+    pdfDoc = await getDocument({ data: buf }).promise
+    currentPage = 1
+    document.getElementById('loadingDiv').style.display = 'none'
+    document.getElementById('canvasWrap').style.display = 'flex'
+    document.getElementById('navControls').style.display = 'flex'
+    renderPage()
+    document.title = file.name + ' — PDF Viewer'
+  } catch(e) {
+    document.getElementById('loadingDiv').style.display = 'none'
+    document.getElementById('dropZone').style.display = 'flex'
+    alert('Could not read this PDF: ' + (e.message || e))
+  }
+}
+
+async function renderPage() {
+  if (!pdfDoc) return
+  const page = await pdfDoc.getPage(currentPage)
+  const vp = page.getViewport({ scale })
+  const canvas = document.getElementById('pdfCanvas')
+  canvas.width = vp.width; canvas.height = vp.height
+  await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise
+  document.getElementById('pageInfo').textContent = `${currentPage} / ${pdfDoc.numPages}`
+  document.getElementById('scaleInfo').textContent = Math.round(scale * 100) + '%'
+  document.getElementById('prevBtn').disabled = currentPage <= 1
+  document.getElementById('nextBtn').disabled = currentPage >= pdfDoc.numPages
+}
+
+function changePage(d) { if (!pdfDoc) return; const n = currentPage + d; if (n < 1 || n > pdfDoc.numPages) return; currentPage = n; renderPage() }
+function changeScale(d) { scale = Math.max(.5, Math.min(3, scale + d)); renderPage() }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1)
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1)
+})
+
+// Handle drag/drop on main
+document.getElementById('dropZone').addEventListener('drop', e => { e.preventDefault(); loadPDF(e.dataTransfer.files[0]) })
+document.getElementById('dropZone').addEventListener('dragover', e => { e.preventDefault(); e.currentTarget.classList.add('drag') })
+document.getElementById('dropZone').addEventListener('dragleave', e => { e.currentTarget.classList.remove('drag') })
+</script>
+</body>
+</html>
