@@ -1,251 +1,290 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PDF Viewer Online Free — Read PDF Files in Browser Without Plugin | Universe Invedors Tools</title>
-  <meta name="description" content="View and read PDF files online free without any plugin, extension or download. Page navigation, zoom, keyboard shortcuts. Powered by Mozilla PDF.js. Your files never leave your browser." />
-  <meta name="keywords" content="PDF viewer online free, read PDF in browser, open PDF online no download, view PDF free, online PDF reader no plugin, PDF.js viewer free" />
-  <link rel="canonical" href="https://pdf.universeinvedors.tech/" />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Free Online PDF Viewer — Read PDFs in Your Browser" />
-  <meta property="og:description" content="Open and read PDF files online free. No plugin needed, no file upload. 100% browser-based." />
-  <meta property="og:url" content="https://pdf.universeinvedors.tech/" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#0d1117" />
-  <link rel="icon" href="https://universeinvedors.tech/favicon.ico" sizes="any" />
-  <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "PDF Viewer Online",
-    "url": "https://pdf.universeinvedors.tech",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "Web",
-    "browserRequirements": "Requires JavaScript",
-    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-    "publisher": {
-      "@type": "Organization",
-      "name": "Universe Invedors",
-      "url": "https://universeinvedors.tech",
-      "logo": "https://universeinvedors.tech/logo.png",
-      "sameAs": [
-        "https://linkedin.com/company/universe-invedors",
-        "https://github.com/UniverseInvedors"
-      ]
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "Universe Invedors", "item": "https://universeinvedors.tech"},
-      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://universeinvedors.tech/tools"},
-      {"@type": "ListItem", "position": 3, "name": "PDF Viewer Online", "item": "https://pdf.universeinvedors.tech"}
-    ]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "PDF Viewer Online",
-    "url": "https://pdf.universeinvedors.tech",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Universe Invedors Tools",
-      "url": "https://universeinvedors.tech"
-    }
-  }
-]
-</script>
-  <meta name="google-adsense-account" content="ca-pub-8759032363251002" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8759032363251002" crossorigin="anonymous"></script>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--bg:#0d1117;--surface:#161b22;--border:rgba(255,255,255,.08);--text:#e6edf3;--muted:#8b949e;--amber:#f59e0b;--font:'Inter',system-ui,sans-serif}
-    body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100dvh;display:flex;flex-direction:column}
-    .topbar{display:flex;align-items:center;gap:.75rem;padding:.55rem 1rem;border-bottom:1px solid var(--border);background:rgba(13,17,23,.97);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;flex-wrap:wrap}
-    .logo{font-size:.82rem;font-weight:700;white-space:nowrap}
-    .nav-controls{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
-    .btn{padding:.35rem .75rem;border-radius:7px;font-size:.78rem;font-weight:600;border:none;cursor:pointer;transition:all .15s;border:1px solid var(--border);background:var(--surface);color:var(--text)}
-    .btn:hover{background:rgba(255,255,255,.12)}
-    .btn:disabled{opacity:.4;cursor:not-allowed}
-    .page-info{font-size:.82rem;color:var(--muted);padding:0 .5rem;white-space:nowrap}
-    .scale-info{font-size:.78rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
-    .btn-open{background:var(--amber);color:#000;border-color:transparent}
-    .btn-open:hover{background:#d97706}
-    .main{flex:1;overflow:hidden;display:flex;flex-direction:column}
-    .drop-zone{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;padding:3rem}
-    .drop-zone:hover,.drop-zone.drag{background:rgba(245,158,11,.03)}
-    .drop-icon{font-size:4rem;margin-bottom:1rem}
-    .drop-zone h2{font-size:1.2rem;font-weight:700;margin-bottom:.4rem}
-    .drop-zone p{font-size:.85rem;color:var(--muted)}
-    .drop-zone .badge{margin-top:.75rem;font-size:.72rem;font-weight:700;padding:.2rem .6rem;border-radius:100px;background:rgba(245,158,11,.1);color:var(--amber);border:1px solid rgba(245,158,11,.25)}
-    .canvas-wrap{flex:1;overflow:auto;background:#525659;display:flex;justify-content:center;padding:1.5rem}
-    canvas{box-shadow:0 4px 24px rgba(0,0,0,.5)}
-    .loading{display:flex;align-items:center;justify-content:center;flex:1;gap:.75rem;font-size:.9rem;color:var(--muted)}
-    .spinner{width:24px;height:24px;border:3px solid rgba(255,255,255,.1);border-top-color:var(--amber);border-radius:50%;animation:spin .8s linear infinite}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    .info-section{max-width:760px;margin:2rem auto;padding:0 1rem;width:100%}
-    .info-section h2{font-size:1rem;font-weight:700;margin-bottom:.75rem}
-    .info-section ul{color:var(--muted);font-size:.87rem;line-height:1.9;padding-left:1.25rem}
-    .ad-slot{padding:.5rem;text-align:center;border-top:1px solid var(--border);margin-top:auto}
-  </style>  <meta name="author" content="Universe Invedors" />
-  <meta name="publisher" content="Universe Invedors" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <link rel="sitemap" type="application/xml" href="https://pdf.universeinvedors.tech/sitemap.xml" />
-
-  <!-- Open Graph image (required for Google + social sharing previews) -->
-  <meta property="og:image" content="https://universeinvedors.tech/og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="PDF Viewer Online Free — Read PDF Files in Browser Without Plugin" />
-  <meta property="og:site_name" content="Universe Invedors Tools" />
-  <meta property="og:locale" content="en_US" />
-
-  <!-- Twitter image -->
-  <meta name="twitter:image" content="https://universeinvedors.tech/og-image.jpg" />
-  <meta name="twitter:site" content="@universeinvedors" />
-  <meta name="twitter:creator" content="@universeinvedors" />
-  <meta name="twitter:label1" content="Category" />
-  <meta name="twitter:data1" content="Free Developer Tool" />
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>PDF Viewer Online Free — Read, Merge, Split and Annotate PDF in Browser | Universe Invedors Tools</title>
+<meta name="description" content="View, merge, split and annotate PDF files online free. No plugin needed. Page navigation, zoom, thumbnail view. Powered by Mozilla PDF.js. Files never uploaded."/>
+<meta name="keywords" content="PDF viewer online free,read PDF in browser,merge PDF online free,split PDF online,PDF tools free,view PDF no download,PDF.js viewer"/>
+<link rel="canonical" href="https://pdf.universeinvedors.tech/"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+<meta name="author" content="Universe Invedors"/>
+<meta property="og:title" content="PDF Viewer Online Free — View, Merge, Split PDF"/>
+<meta property="og:description" content="View, merge and split PDF files online free. No plugin, no upload. PDF.js powered."/>
+<meta property="og:url" content="https://pdf.universeinvedors.tech/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://universeinvedors.tech/og-image.jpg"/>
+<meta property="og:site_name" content="Universe Invedors Tools"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://universeinvedors.tech/og-image.jpg"/>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+<link rel="icon" href="https://universeinvedors.tech/favicon.ico" sizes="any"/>
+<meta name="theme-color" content="#090c13"/>
+<meta name="google-adsense-account" content="ca-pub-8759032363251002"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8759032363251002" crossorigin="anonymous"></script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDF Viewer Online","url":"https://pdf.universeinvedors.tech","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Universe Invedors","url":"https://universeinvedors.tech"}},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Universe Invedors","item":"https://universeinvedors.tech"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://universeinvedors.tech/tools"},{"@type":"ListItem","position":3,"name":"PDF Viewer","item":"https://pdf.universeinvedors.tech"}]}]</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#090c13;--surf:#0f1420;--elev:#141b28;--card:#1a2235;--inp:#111827;
+  --t1:#f0f4ff;--t2:#a8b5cc;--t3:#64748b;--t4:#3d4f6e;
+  --acc:#f59e0b;--acc-h:#fbbf24;--acc-glow:rgba(245,158,11,.25);
+  --green:#10b981;--blue:#3b82f6;--violet:#8b5cf6;--red:#ef4444;
+  --border:rgba(255,255,255,.07);--bh:rgba(255,255,255,.14);
+  --font:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --mono:'JetBrains Mono','Fira Code',Consolas,monospace;
+  --r:10px;--th:52px;--sw:220px;--tr:180ms cubic-bezier(.4,0,.2,1);
+}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--t1);height:100dvh;display:flex;flex-direction:column;overflow:hidden;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:3px}
+.tb{height:var(--th);background:rgba(9,12,19,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem;padding:0 .85rem;flex-shrink:0;z-index:200}
+.logo{display:flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:700;color:var(--t1);text-decoration:none;white-space:nowrap;flex-shrink:0}
+.logo:hover{color:var(--acc-h);text-decoration:none}
+.sp{flex:1}
+.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.38rem .85rem;border-radius:var(--r);font-size:.75rem;font-weight:600;cursor:pointer;border:none;transition:all var(--tr);white-space:nowrap}
+.bg{background:rgba(255,255,255,.05);color:var(--t2);border:1px solid var(--border)}
+.bg:hover{background:rgba(255,255,255,.09);border-color:var(--bh);color:var(--t1)}
+.bp{background:var(--acc);color:#000}
+.bp:hover{background:var(--acc-h)}
+.bsm{padding:.26rem .6rem;font-size:.68rem}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+/* Mode tabs */
+.mode-bar{display:flex;align-items:center;gap:.1rem;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r);padding:3px;flex-shrink:0}
+.mbt{padding:.26rem .65rem;border-radius:6px;font-size:.72rem;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--t3);white-space:nowrap;transition:all var(--tr)}
+.mbt:hover{background:rgba(255,255,255,.06);color:var(--t2)}
+.mbt.active{background:var(--acc);color:#000}
+/* Nav controls */
+.nav-bar{display:flex;align-items:center;gap:.35rem;padding:0 .85rem;height:44px;background:var(--surf);border-bottom:1px solid var(--border);flex-shrink:0;flex-wrap:wrap}
+.page-info{font-size:.8rem;color:var(--t2);font-weight:500;min-width:80px;text-align:center}
+.scale-info{font-size:.75rem;color:var(--t3);font-family:var(--mono);min-width:48px;text-align:center}
+.sep{width:1px;height:20px;background:var(--border);margin:0 .2rem}
+/* Main layout */
+.main{display:flex;flex:1;overflow:hidden}
+.thumb-panel{width:160px;background:var(--surf);border-right:1px solid var(--border);overflow-y:auto;padding:.5rem;flex-shrink:0;display:flex;flex-direction:column;gap:.4rem}
+.thumb-item{border:2px solid var(--border);border-radius:6px;cursor:pointer;overflow:hidden;transition:all var(--tr)}
+.thumb-item:hover,.thumb-item.active{border-color:var(--acc)}
+.thumb-item canvas{width:100%;display:block}
+.thumb-label{font-size:.65rem;color:var(--t3);text-align:center;padding:.2rem 0}
+/* PDF canvas area */
+.pdf-area{flex:1;overflow:auto;background:#525659;display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem;gap:1rem}
+/* Landing */
+.landing{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
+.drop-zone{border:2px dashed var(--border);border-radius:14px;padding:3rem 2rem;text-align:center;cursor:pointer;transition:all var(--tr);background:var(--surf);max-width:520px;width:100%}
+.drop-zone:hover,.drop-zone.drag{border-color:var(--acc);background:rgba(245,158,11,.04)}
+/* Status */
+.statusbar{display:flex;align-items:center;gap:.75rem;padding:.25rem .85rem;background:var(--surf);border-top:1px solid var(--border);font-size:.68rem;color:var(--t3);flex-shrink:0}
+.sdot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.seo-footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.3rem .75rem;padding:.4rem .85rem;border-top:1px solid var(--border);background:var(--surf);font-size:.67rem;color:var(--t3);flex-shrink:0}
+.seo-footer a{color:var(--t3)}.seo-footer a:hover{color:var(--t2)}
+.sfl{display:flex;flex-wrap:wrap;gap:.2rem .6rem}
+/* Loading */
+.spinner{width:28px;height:28px;border:3px solid rgba(255,255,255,.1);border-top-color:var(--acc);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toasts{position:fixed;bottom:1rem;right:1rem;z-index:999;display:flex;flex-direction:column;gap:.4rem;pointer-events:none}
+.toast{padding:.55rem .9rem;border-radius:var(--r);font-size:.75rem;font-weight:600;background:var(--card);border:1px solid var(--border);color:var(--t1);box-shadow:0 8px 32px rgba(0,0,0,.5);animation:tin .22s ease}
+.toast.ok{border-color:rgba(16,185,129,.3);color:var(--green)}.toast.err{border-color:rgba(239,68,68,.3);color:#f87171}
+@keyframes tin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){.thumb-panel{display:none}.nav-bar{height:auto;padding:.3rem .5rem}}
+</style>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="logo">📄 <a href="https://universeinvedors.tech/tools" style="color:inherit;text-decoration:none">Universe Tools</a> / PDF Viewer</div>
-  <div class="nav-controls" id="navControls" style="display:none">
-    <button class="btn" id="prevBtn" onclick="changePage(-1)" disabled>‹ Prev</button>
-    <span class="page-info" id="pageInfo">1 / 1</span>
-    <button class="btn" id="nextBtn" onclick="changePage(1)" disabled>Next ›</button>
-    <button class="btn" onclick="changeScale(-0.2)">−</button>
-    <span class="scale-info" id="scaleInfo">120%</span>
-    <button class="btn" onclick="changeScale(0.2)">+</button>
+<header class="tb">
+  <a href="https://universeinvedors.tech/tools" class="logo">📄 Universe Tools <span style="color:var(--t4);font-weight:400;font-size:.75rem">/</span> <span style="color:var(--acc-h)">PDF Tools</span></a>
+  <div class="mode-bar">
+    <button class="mbt active" onclick="setMode('view',this)">📖 View</button>
+    <button class="mbt" onclick="setMode('merge',this)">🔗 Merge</button>
+    <button class="mbt" onclick="setMode('split',this)">✂ Split</button>
+    <button class="mbt" onclick="setMode('info',this)">ℹ Info</button>
   </div>
-  <div style="flex:1"></div>
-  <button class="btn btn-open" onclick="document.getElementById('fileInput').click()">Open PDF</button>
-  <input type="file" id="fileInput" accept="application/pdf" style="display:none" onchange="loadPDF(this.files[0])">
+  <div class="sp"></div>
+  <div id="nav-actions" style="display:none;gap:.35rem;align-items:center">
+    <button class="btn bg bsm" onclick="changePage(-1)" id="prev-btn" disabled>‹</button>
+    <span class="page-info" id="page-info">1 / 1</span>
+    <button class="btn bg bsm" onclick="changePage(1)" id="next-btn" disabled>›</button>
+    <div class="sep"></div>
+    <button class="btn bg bsm" onclick="changeScale(-.2)">−</button>
+    <span class="scale-info" id="scale-info">100%</span>
+    <button class="btn bg bsm" onclick="changeScale(.2)">+</button>
+    <div class="sep"></div>
+    <button class="btn bg bsm" onclick="document.getElementById('file-input').click()">Open</button>
+  </div>
+  <div id="open-btn-wrap">
+    <button class="btn bp" onclick="document.getElementById('file-input').click()">Open PDF</button>
+  </div>
+  <input type="file" id="file-input" accept="application/pdf" style="display:none" onchange="loadPDF(this.files[0])">
 </header>
 
-<main class="main">
-  <div id="dropZone" class="drop-zone"
-    onclick="document.getElementById('fileInput').click()"
-    ondrop="ev=>{ev.preventDefault();loadPDF(ev.dataTransfer.files[0])}"
-    ondragover="ev=>{ev.preventDefault();this.classList.add('drag')}"
-    ondragleave="this.classList.remove('drag')">
-    <div class="drop-icon">📄</div>
-    <h2>Drop a PDF here or click to open</h2>
-    <p>Your file is read locally — never uploaded to any server</p>
-    <span class="badge">🔒 100% Private</span>
-  </div>
-  <div id="loadingDiv" class="loading" style="display:none">
-    <div class="spinner"></div><span>Loading PDF…</span>
-  </div>
-  <div id="canvasWrap" class="canvas-wrap" style="display:none">
-    <canvas id="pdfCanvas"></canvas>
-  </div>
-
-  <div class="info-section" id="infoSection">
-    <h2>How to use this PDF viewer</h2>
-    <ul>
-      <li>Click <strong>Open PDF</strong> or drag & drop your PDF file</li>
-      <li>Navigate pages with the Prev / Next buttons</li>
-      <li>Zoom in and out with the + / − buttons</li>
-      <li>Your PDF is opened locally — it never leaves your device</li>
-    </ul>
-    <h2 style="margin-top:1.25rem">Features</h2>
-    <ul>
-      <li>Page navigation with keyboard arrow keys</li>
-      <li>Zoom from 50% to 300%</li>
-      <li>Works with any PDF version</li>
-      <li>No file size limit (subject to your device memory)</li>
-      <li>Works offline once page is loaded</li>
-    </ul>
-  </div>
-</main>
-
-<div class="ad-slot" aria-label="Advertisement">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8759032363251002" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<!-- Nav bar (shown when PDF loaded) -->
+<div class="nav-bar" id="nav-bar" style="display:none">
+  <span style="font-size:.72rem;color:var(--t3)">Keyboard: ← → to navigate · +/− to zoom</span>
+  <div style="flex:1"></div>
+  <span id="pdf-title" style="font-size:.72rem;color:var(--t2);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
+  <div style="flex:1"></div>
+  <button class="btn bg bsm" onclick="toggleThumbs()" id="thumb-btn">📑 Pages</button>
+  <button class="btn bp bsm" onclick="printPDF()">🖨 Print</button>
 </div>
 
-<script>
-let pdfDoc = null, currentPage = 1, scale = 1.2
+<div class="main">
+  <!-- Thumbnails -->
+  <div class="thumb-panel" id="thumb-panel" style="display:none"></div>
 
-async function loadPDF(file) {
-  if (!file) return
-  document.getElementById('dropZone').style.display = 'none'
-  document.getElementById('loadingDiv').style.display = 'flex'
-  document.getElementById('infoSection').style.display = 'none'
+  <!-- PDF canvas area / landing -->
+  <div id="pdf-area" class="pdf-area" style="display:none"></div>
+
+  <!-- Landing (before PDF loaded) -->
+  <div id="landing" class="landing">
+    <div class="drop-zone" id="drop-zone"
+      onclick="document.getElementById('file-input').click()"
+      ondragover="event.preventDefault();this.classList.add('drag')"
+      ondragleave="this.classList.remove('drag')"
+      ondrop="event.preventDefault();this.classList.remove('drag');loadPDF(event.dataTransfer.files[0])">
+      <div style="font-size:3.5rem;margin-bottom:1rem">📄</div>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:.4rem">Drop a PDF here or click to open</h2>
+      <p style="font-size:.8rem;color:var(--t2);margin-bottom:.5rem">Your file is opened locally — never uploaded to any server</p>
+      <span style="display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;padding:.3rem .7rem;border-radius:100px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);color:var(--acc)">🔒 100% Private</span>
+    </div>
+    <div id="merge-area" style="display:none;max-width:520px;width:100%;margin-top:1.5rem">
+      <p style="color:var(--t2);font-size:.85rem;margin-bottom:.75rem;text-align:center">Select multiple PDF files to merge them into one</p>
+      <input type="file" id="merge-input" accept="application/pdf" multiple style="display:none" onchange="mergePDFs(this.files)">
+      <button class="btn bp" style="width:100%" onclick="document.getElementById('merge-input').click()">Select PDFs to Merge</button>
+    </div>
+  </div>
+</div>
+
+<div class="statusbar">
+  <span class="sdot"></span>
+  <span id="status-mode" style="color:var(--acc-h);font-weight:600">PDF Viewer</span>
+  <span id="status-info" style="color:var(--t3)">No file open</span>
+  <span style="margin-left:auto;font-size:.65rem;color:var(--t4)">PDF.js · Arrow keys navigate · 100% local</span>
+</div>
+
+<footer class="seo-footer">
+  <div class="sfl">
+    <a href="https://universeinvedors.tech">Universe Invedors</a>
+    <a href="https://universeinvedors.tech/tools">All Tools</a>
+    <a href="https://code.universeinvedors.tech">Code</a>
+    <a href="https://diagram.universeinvedors.tech">Diagrams</a>
+    <a href="https://chart.universeinvedors.tech">Charts</a>
+    <a href="https://ocr.universeinvedors.tech">OCR</a>
+    <a href="https://image.universeinvedors.tech">Image</a>
+    <a href="https://3d.universeinvedors.tech">3D</a>
+    <a href="https://map.universeinvedors.tech">Maps</a>
+    <a href="https://media.universeinvedors.tech">Media</a>
+  </div>
+  <span>© 2024 Universe Invedors · PDF.js · View Merge Split · Free PDF tools</span>
+</footer>
+
+<div class="toasts" id="toasts"></div>
+
+<script>
+let pdfDoc=null, currentPage=1, scale=1.2, thumbsVisible=false, currentMode='view'
+
+function setMode(m,btn){
+  currentMode=m
+  document.querySelectorAll('.mbt').forEach(b=>b.classList.remove('active')); btn.classList.add('active')
+  document.getElementById('status-mode').textContent = {view:'PDF Viewer',merge:'PDF Merger',split:'PDF Splitter',info:'PDF Info'}[m]||'PDF Viewer'
+  document.getElementById('merge-area').style.display = m==='merge'&&!pdfDoc ? 'block':'none'
+}
+
+async function loadPDF(file){
+  if(!file||file.type!=='application/pdf') { toast('Please open a PDF file','err'); return }
+  document.getElementById('landing').style.display='none'
+  document.getElementById('pdf-area').style.display='flex'
+  document.getElementById('pdf-area').innerHTML='<div style="padding:2rem;text-align:center"><div class="spinner"></div><p style="margin-top:.75rem;font-size:.85rem;color:var(--t3)">Loading PDF…</p></div>'
   try {
-    const { getDocument, GlobalWorkerOptions } = await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4/build/pdf.min.mjs')
-    GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4/build/pdf.worker.min.mjs'
-    const buf = await file.arrayBuffer()
-    pdfDoc = await getDocument({ data: buf }).promise
-    currentPage = 1
-    document.getElementById('loadingDiv').style.display = 'none'
-    document.getElementById('canvasWrap').style.display = 'flex'
-    document.getElementById('navControls').style.display = 'flex'
-    renderPage()
-    document.title = file.name + ' — PDF Viewer'
-  } catch(e) {
-    document.getElementById('loadingDiv').style.display = 'none'
-    document.getElementById('dropZone').style.display = 'flex'
-    alert('Could not read this PDF: ' + (e.message || e))
+    const {getDocument,GlobalWorkerOptions}=await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4/build/pdf.min.mjs')
+    GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@4/build/pdf.worker.min.mjs'
+    const buf=await file.arrayBuffer()
+    pdfDoc=await getDocument({data:buf}).promise
+    currentPage=1
+    document.getElementById('nav-actions').style.display='flex'
+    document.getElementById('open-btn-wrap').style.display='none'
+    document.getElementById('nav-bar').style.display='flex'
+    document.getElementById('pdf-title').textContent=file.name
+    document.getElementById('status-info').textContent=`${pdfDoc.numPages} pages · ${(file.size/1024).toFixed(0)} KB`
+    await renderPage()
+    await buildThumbs()
+  } catch(e){ toast('Could not read PDF: '+e.message.slice(0,60),'err'); document.getElementById('landing').style.display='flex'; document.getElementById('pdf-area').style.display='none' }
+}
+
+async function renderPage(){
+  if(!pdfDoc) return
+  const page=await pdfDoc.getPage(currentPage)
+  const vp=page.getViewport({scale})
+  const canvas=document.createElement('canvas')
+  canvas.width=vp.width; canvas.height=vp.height
+  canvas.style.boxShadow='0 4px 24px rgba(0,0,0,.6)'
+  canvas.style.borderRadius='4px'
+  await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise
+  const area=document.getElementById('pdf-area')
+  area.innerHTML=''
+  area.appendChild(canvas)
+  document.getElementById('page-info').textContent=`${currentPage} / ${pdfDoc.numPages}`
+  document.getElementById('scale-info').textContent=Math.round(scale*100)+'%'
+  document.getElementById('prev-btn').disabled=currentPage<=1
+  document.getElementById('next-btn').disabled=currentPage>=pdfDoc.numPages
+  // Update active thumb
+  document.querySelectorAll('.thumb-item').forEach((t,i)=>{ t.classList.toggle('active',i===currentPage-1) })
+}
+
+async function buildThumbs(){
+  const panel=document.getElementById('thumb-panel'); panel.innerHTML=''
+  for(let i=1;i<=Math.min(pdfDoc.numPages,50);i++){
+    const page=await pdfDoc.getPage(i)
+    const vp=page.getViewport({scale:.2})
+    const canvas=document.createElement('canvas')
+    canvas.width=vp.width; canvas.height=vp.height
+    await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise
+    const item=document.createElement('div'); item.className='thumb-item'+(i===1?' active':'')
+    item.appendChild(canvas)
+    const lbl=document.createElement('div'); lbl.className='thumb-label'; lbl.textContent=i
+    item.appendChild(lbl)
+    item.onclick=()=>{ currentPage=i; renderPage() }
+    panel.appendChild(item)
   }
 }
 
-async function renderPage() {
-  if (!pdfDoc) return
-  const page = await pdfDoc.getPage(currentPage)
-  const vp = page.getViewport({ scale })
-  const canvas = document.getElementById('pdfCanvas')
-  canvas.width = vp.width; canvas.height = vp.height
-  await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise
-  document.getElementById('pageInfo').textContent = `${currentPage} / ${pdfDoc.numPages}`
-  document.getElementById('scaleInfo').textContent = Math.round(scale * 100) + '%'
-  document.getElementById('prevBtn').disabled = currentPage <= 1
-  document.getElementById('nextBtn').disabled = currentPage >= pdfDoc.numPages
+function changePage(d){ if(!pdfDoc) return; const n=currentPage+d; if(n<1||n>pdfDoc.numPages) return; currentPage=n; renderPage() }
+function changeScale(d){ scale=Math.max(.4,Math.min(3,scale+d)); if(pdfDoc) renderPage() }
+function toggleThumbs(){
+  thumbsVisible=!thumbsVisible
+  document.getElementById('thumb-panel').style.display=thumbsVisible?'flex':'none'
+  document.getElementById('thumb-btn').style.background=thumbsVisible?'rgba(245,158,11,.15)':''
+}
+function printPDF(){ const canvas=document.querySelector('#pdf-area canvas'); if(!canvas) return; const w=window.open(); w.document.write(`<html><body style="margin:0"><img src="${canvas.toDataURL()}" style="max-width:100%"/></body></html>`); w.document.close(); w.print() }
+
+async function mergePDFs(files){
+  if(!files||files.length<2){ toast('Select at least 2 PDF files','err'); return }
+  try {
+    const {PDFDocument}=await import('https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.esm.min.js')
+    const merged=await PDFDocument.create()
+    for(const file of files){
+      const buf=await file.arrayBuffer()
+      const pdf=await PDFDocument.load(buf)
+      const pages=await merged.copyPages(pdf,pdf.getPageIndices())
+      pages.forEach(p=>merged.addPage(p))
+    }
+    const bytes=await merged.save()
+    const blob=new Blob([bytes],{type:'application/pdf'})
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='merged.pdf'; a.click()
+    toast(`Merged ${files.length} PDFs`,'ok')
+  } catch(e){ toast('Merge failed: '+e.message.slice(0,60),'err') }
 }
 
-function changePage(d) { if (!pdfDoc) return; const n = currentPage + d; if (n < 1 || n > pdfDoc.numPages) return; currentPage = n; renderPage() }
-function changeScale(d) { scale = Math.max(.5, Math.min(3, scale + d)); renderPage() }
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1)
-  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1)
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown') changePage(1)
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp') changePage(-1)
+  if(e.key==='+') changeScale(.2)
+  if(e.key==='-') changeScale(-.2)
 })
 
-// Handle drag/drop on main
-document.getElementById('dropZone').addEventListener('drop', e => { e.preventDefault(); loadPDF(e.dataTransfer.files[0]) })
-document.getElementById('dropZone').addEventListener('dragover', e => { e.preventDefault(); e.currentTarget.classList.add('drag') })
-document.getElementById('dropZone').addEventListener('dragleave', e => { e.currentTarget.classList.remove('drag') })
+function toast(msg,type=''){
+  const el=document.createElement('div'); el.className='toast'+(type?' '+type:''); el.textContent=msg
+  document.getElementById('toasts').appendChild(el); setTimeout(()=>el.remove(),2800)
+}
 </script>
-
-<!-- SEO Footer — internal links to main site and sibling tools -->
-<footer style="padding:.75rem 1rem;border-top:1px solid rgba(255,255,255,.07);background:#0a0d13;font-family:'Inter',system-ui,sans-serif;font-size:.72rem;color:#6b7685;display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;align-items:center;justify-content:space-between">
-  <div style="display:flex;flex-wrap:wrap;gap:.4rem .9rem;align-items:center">
-    <a href="https://universeinvedors.tech" style="color:#3b82f6;text-decoration:none" rel="noopener">Universe Invedors</a>
-    <span>·</span>
-    <a href="https://universeinvedors.tech/tools" style="color:#8b949e;text-decoration:none">All Tools</a>
-    <span>·</span>
-    <a href="https://code.universeinvedors.tech" style="color:#8b949e;text-decoration:none">Code</a>
-    <a href="https://diagram.universeinvedors.tech" style="color:#8b949e;text-decoration:none">Diagrams</a>
-    <a href="https://chart.universeinvedors.tech" style="color:#8b949e;text-decoration:none">Charts</a>
-    <a href="https://ocr.universeinvedors.tech" style="color:#8b949e;text-decoration:none">OCR</a>
-    <a href="https://pdf.universeinvedors.tech" style="color:#8b949e;text-decoration:none">PDF</a>
-    <a href="https://image.universeinvedors.tech" style="color:#8b949e;text-decoration:none">Image</a>
-    <a href="https://3d.universeinvedors.tech" style="color:#8b949e;text-decoration:none">3D</a>
-    <a href="https://map.universeinvedors.tech" style="color:#8b949e;text-decoration:none">Maps</a>
-    <a href="https://media.universeinvedors.tech" style="color:#8b949e;text-decoration:none">Media</a>
-  </div>
-  <div>
-    <a href="https://universeinvedors.tech/privacy" style="color:#6b7685;text-decoration:none">Privacy</a>
-    &nbsp;·&nbsp;
-    <span>&copy; 2024 Universe Invedors</span>
-  </div>
-</footer>
 </body>
 </html>
