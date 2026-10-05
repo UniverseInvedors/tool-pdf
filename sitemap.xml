@@ -3,13 +3,8 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://pdf.universeinvedors.tech/</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://universeinvedors.tech/og-image.jpg</image:loc>
-      <image:title>PDF Viewer Online Free</image:title>
-      <image:caption>Free online tool by Universe Invedors</image:caption>
-    </image:image>
   </url>
 </urlset>
