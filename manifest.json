@@ -1,0 +1,35 @@
+﻿{
+    "description":  "View, merge, split, watermark, rotate and extract pages from PDFs.",
+    "short_name":  "PDF",
+    "shortcuts":  [
+                      {
+                          "url":  "/",
+                          "name":  "PDF Suite",
+                          "description":  "View, merge, split, watermark, rotate and extract pages from PDFs."
+                      }
+                  ],
+    "icons":  [
+                  {
+                      "type":  "image/png",
+                      "sizes":  "192x192",
+                      "src":  "/icons/icon-192.png"
+                  },
+                  {
+                      "purpose":  "maskable",
+                      "type":  "image/png",
+                      "sizes":  "512x512",
+                      "src":  "/icons/icon-512.png"
+                  }
+              ],
+    "theme_color":  "#f59e0b",
+    "display":  "standalone",
+    "name":  "Universe Invedors — PDF Suite",
+    "categories":  [
+                       "productivity",
+                       "utilities",
+                       "developer tools"
+                   ],
+    "background_color":  "#03050a",
+    "start_url":  "/",
+    "orientation":  "any"
+}
