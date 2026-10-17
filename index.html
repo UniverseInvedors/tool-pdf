@@ -118,12 +118,12 @@ input[type=range]{accent-color:var(--accent);width:100%}
   </a>
   <div class="topbar-sep"></div>
   <div class="etabs">
-    <button class="et active" id="et-view"    onclick="setMode('view')">?? View</button>
-    <button class="et"        id="et-merge"   onclick="setMode('merge')">?? Merge</button>
-    <button class="et"        id="et-split"   onclick="setMode('split')">? Split</button>
-    <button class="et"        id="et-extract" onclick="setMode('extract')">?? Extract</button>
-    <button class="et"        id="et-wm"      onclick="setMode('wm')">?? Watermark</button>
-    <button class="et"        id="et-rotate"  onclick="setMode('rotate')">?? Rotate</button>
+    <button class="et active" id="et-view"    onclick="setMode('view')">View</button>
+    <button class="et"        id="et-merge"   onclick="setMode('merge')">Merge</button>
+    <button class="et"        id="et-split"   onclick="setMode('split')">Split</button>
+    <button class="et"        id="et-extract" onclick="setMode('extract')">Extract</button>
+    <button class="et"        id="et-wm"      onclick="setMode('wm')">Watermark</button>
+    <button class="et"        id="et-rotate"  onclick="setMode('rotate')">Rotate</button>
   </div>
   <div class="sp"></div>
   <div id="view-nav-actions" style="display:none;align-items:center;gap:.35rem">
@@ -135,7 +135,7 @@ input[type=range]{accent-color:var(--accent);width:100%}
     <span class="scale-info"   id="scale-info">120%</span>
     <button class="btn bg bsm" onclick="changeScale(.2)">+</button>
     <div class="nb-sep"></div>
-    <button class="btn bg bsm" onclick="toggleThumbs()" id="thumb-btn">?? Pages</button>
+    <button class="btn bg bsm" onclick="toggleThumbs()" id="thumb-btn">Pages</button>
     <button class="btn bp bsm" onclick="openFileInput()">Open PDF</button>
   </div>
   <div id="open-btn-wrap">
@@ -198,7 +198,7 @@ input[type=range]{accent-color:var(--accent);width:100%}
       <div id="merge-file-list" class="merge-list"></div>
     </div>
     <div id="merge-actions" style="display:none;gap:.4rem;flex-wrap:wrap">
-      <button class="btn bp" onclick="runMerge()">?? Merge PDFs</button>
+      <button class="btn bp" onclick="runMerge()">Merge PDFs</button>
       <button class="btn bg bsm" onclick="clearMergeList()">Clear list</button>
     </div>
     <div id="merge-prog" style="display:none">
@@ -206,8 +206,8 @@ input[type=range]{accent-color:var(--accent);width:100%}
       <div class="prog-bar"><div class="prog-fill" id="merge-prog-fill" style="width:0%"></div></div>
     </div>
     <div id="merge-result" class="result-box" style="display:none">
-      <div class="result-title">? Merged successfully</div>
-      <a id="merge-dl" class="btn bp" href="#" download="merged.pdf">? Download merged.pdf</a>
+      <div class="result-title">Merged successfully</div>
+      <a id="merge-dl" class="btn bp" href="#" download="merged.pdf">Download merged.pdf</a>
     </div>
   </div>
 
@@ -229,15 +229,15 @@ input[type=range]{accent-color:var(--accent);width:100%}
     <div id="split-fields" style="display:none">
       <label class="fl">Page range (e.g. 1,3,5-8)</label>
       <input class="fi" id="split-range" placeholder="1,3,5-8" style="margin-bottom:.65rem">
-      <button class="btn bp" onclick="runSplit()">? Extract Pages</button>
+      <button class="btn bp" onclick="runSplit()">Extract Pages</button>
     </div>
     <div id="split-prog" style="display:none">
       <p id="split-msg" style="font-size:.78rem;color:var(--t2);margin-bottom:.3rem">Processing�</p>
       <div class="prog-bar"><div class="prog-fill" id="split-prog-fill" style="width:50%"></div></div>
     </div>
     <div id="split-result" class="result-box" style="display:none">
-      <div class="result-title">? Pages extracted</div>
-      <a id="split-dl" class="btn bp" href="#" download="split.pdf">? Download</a>
+      <div class="result-title">Pages extracted</div>
+      <a id="split-dl" class="btn bp" href="#" download="split.pdf">Download</a>
     </div>
   </div>
 
@@ -274,15 +274,15 @@ input[type=range]{accent-color:var(--accent);width:100%}
           </select>
         </div>
       </div>
-      <button class="btn bp" id="extract-run-btn" onclick="runExtract()">?? Extract All Pages</button>
+      <button class="btn bp" id="extract-run-btn" onclick="runExtract()">Extract All Pages</button>
     </div>
     <div id="extract-prog" style="display:none">
       <p id="extract-msg" style="font-size:.78rem;color:var(--t2);margin-bottom:.3rem">Rendering pages�</p>
       <div class="prog-bar"><div class="prog-fill" id="extract-prog-fill" style="width:0%"></div></div>
     </div>
     <div id="extract-result" class="result-box" style="display:none">
-      <div class="result-title">? Pages extracted</div>
-      <a id="extract-dl" class="btn bp" href="#" download="pdf-pages.zip">? Download ZIP</a>
+      <div class="result-title">Pages extracted</div>
+      <a id="extract-dl" class="btn bp" href="#" download="pdf-pages.zip">Download ZIP</a>
     </div>
   </div>
 
@@ -310,15 +310,15 @@ input[type=range]{accent-color:var(--accent);width:100%}
         <div><label class="fl">Rotation (�)</label><input class="fi" type="number" id="wm-rot" value="-45" min="-180" max="180"></div>
         <div><label class="fl">Color</label><input type="color" id="wm-color" value="#ef4444" style="width:100%;height:38px;border-radius:var(--r);border:1px solid var(--border);padding:.2rem;background:transparent;cursor:pointer"></div>
       </div>
-      <button class="btn bp" onclick="runWatermark()">?? Apply Watermark</button>
+      <button class="btn bp" onclick="runWatermark()">Apply Watermark</button>
     </div>
     <div id="wm-prog" style="display:none">
       <p id="wm-msg" style="font-size:.78rem;color:var(--t2);margin-bottom:.3rem">Adding watermark�</p>
       <div class="prog-bar"><div class="prog-fill" id="wm-prog-fill" style="width:50%"></div></div>
     </div>
     <div id="wm-result" class="result-box" style="display:none">
-      <div class="result-title">? Watermark applied</div>
-      <a id="wm-dl" class="btn bp" href="#" download="watermarked.pdf">? Download</a>
+      <div class="result-title">Watermark applied</div>
+      <a id="wm-dl" class="btn bp" href="#" download="watermarked.pdf">Download</a>
     </div>
   </div>
 
@@ -358,15 +358,15 @@ input[type=range]{accent-color:var(--accent);width:100%}
           </select>
         </div>
       </div>
-      <button class="btn bp" onclick="runRotate()">?? Rotate Pages</button>
+      <button class="btn bp" onclick="runRotate()">Rotate Pages</button>
     </div>
     <div id="rotate-prog" style="display:none">
       <p id="rotate-msg" style="font-size:.78rem;color:var(--t2);margin-bottom:.3rem">Rotating�</p>
       <div class="prog-bar"><div class="prog-fill" id="rotate-prog-fill" style="width:50%"></div></div>
     </div>
     <div id="rotate-result" class="result-box" style="display:none">
-      <div class="result-title">? Rotation applied</div>
-      <a id="rotate-dl" class="btn bp" href="#" download="rotated.pdf">? Download</a>
+      <div class="result-title">Rotation applied</div>
+      <a id="rotate-dl" class="btn bp" href="#" download="rotated.pdf">Download</a>
     </div>
   </div>
 </div>
